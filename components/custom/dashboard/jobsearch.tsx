@@ -53,7 +53,7 @@ const Jobsearch = () => {
 
                 <div className='grid w-full grid-cols-1 gap-4 gap-x-4 transition-all sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 pb-[10px] '>
                     {times.map((_, index) => (
-                        <Jobsearchcard />
+                        <Jobsearchcard key={index} />
                     ))}
                 </div>
                 <Pagination>
