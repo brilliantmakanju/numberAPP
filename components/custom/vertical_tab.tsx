@@ -9,7 +9,7 @@ import Subcription from './settings/suscription';
 const tabs = [
     { id: 'tabs-profile', label: 'Profile', content: <Profile /> },
     { id: 'tabs-subscription', label: 'Subscription', content: <Subcription /> },
-    { id: 'tabs-application', label: 'Application Settings', content: 'Tab 2 content' },
+    { id: 'tabs-application', label: 'Application Settings', content: <Subcription /> },
 ];
 
 const VerticalTabs = () => {
@@ -28,9 +28,9 @@ const VerticalTabs = () => {
 
 
     return (
-        <div className="flex flex-col h-auto xl:flex-row shadow-lg rounded-lg border overflow-hidden overflow-y-scroll ">
+        <div className="flex flex-col xl:flex-row w-full">
             {/* Vertical tab navigation */}
-            <ul className="flex w-auto list-none flex-col justify-start items-start ">
+            <ul className="flex w-full xl:w-[20rem] border rounded-lg shadow overflow-hidden h-[11rem] xl:h-[10rem] xl:py-[.5rem] list-none flex-col justify-start items-start ">
                 {tabs.map((tab) => (
                     <li key={tab.id} className=" w-full">
                         <Link
@@ -45,12 +45,12 @@ const VerticalTabs = () => {
             </ul>
 
             {/* Tab content */}
-            <div className="h-full bg-white descriptions xl:rounded-r-lg  overflow-hidden overflow-y-scroll w-full md:w-[40rem] ">
+            <div className="h-full bg-white descriptions xl:rounded-r-lg  overflow-hidden overflow-y-scroll w-full ">
                 {tabs.map((tab) => (
                     <div
                         key={`content-${tab.id}`}
                         className={`${activeTab === tab.id ? 'block opacity-100' : 'hidden opacity-0'
-                            } transition-all ease-in-out duration-300    w-full h-auto  `}
+                            } transition-all ease-in-out duration-300 w-full `}
                     >
                         {tab.content}
                     </div>
