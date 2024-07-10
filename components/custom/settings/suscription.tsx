@@ -20,7 +20,7 @@ const Subcription = () => {
 
 
     return (
-        <div className='w-full overflow-hidden overflow-y-scroll h-full descriptions flex flex-col p-[10px] pb-[11.5rem] md:px-[20px] xl:pb-[0px] justify-start items-start'>
+        <div className='w-full overflow-hidden overflow-y-scroll  h-full descriptions flex flex-col p-[10px] pb-[10rem] md:px-[20px] xl:pb-[0px] justify-start items-start'>
             <div className='flex gap-[5px] flex-col justify-start items-start'>
                 <h1 className='text-[18px] font-semibold'>Current Plan</h1>
             </div>
@@ -117,7 +117,7 @@ const Subcription = () => {
                     <h1 className='text-[18px] font-semibold'>Billing History</h1>
                 </div>
 
-                <div className='w-full flex mt-[14px] mb-[3.9rem] md:mb-[0px] justify-start items-start'>
+                <div className='w-full flex mt-[14px] justify-start items-start'>
                     <Table>
                         {/* <TableCaption>A list of your recent invoices.</TableCaption> */}
                         <TableHeader>

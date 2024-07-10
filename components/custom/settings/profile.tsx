@@ -9,12 +9,12 @@ import { GitHubLogoIcon } from '@radix-ui/react-icons'
 
 const Profile = () => {
 
-    const [changename, setChangename] = useState(true)
-    const [changeemail, setChangemail] = useState(true)
+    const [changename, setChangename] = useState(false)
+    const [changeemail, setChangemail] = useState(false)
 
 
     return (
-        <div className='w-full overflow-hidden overflow-y-scroll  h-[40rem] xl:h-full descriptions flex flex-col p-[10px] pb-[3rem] md:px-[20px] xl:pb-[0px] justify-start items-start'>
+        <div className='w-full overflow-hidden overflow-y-scroll  h-full descriptions flex flex-col p-[10px] pb-[7rem] md:px-[20px] xl:pb-[0px] justify-start items-start'>
             <div className='w-full gap-[20px] flex flex-col justify-start items-start'>
 
                 <div className='flex justify-start gap-[20px] flex-col items-start pt-[18px] pb-[10px] border-b-2 w-full '>
