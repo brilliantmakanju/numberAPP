@@ -122,7 +122,7 @@ const Subcription = () => {
                     <Table>
                         {/* <TableCaption>A list of your recent invoices.</TableCaption> */}
                         <TableHeader>
-                            <TableRow className='bg-[black] overflow-hidden text-white'>
+                            <TableRow className='bg-[black] hover:bg-black overflow-hidden text-white'>
                                 <TableHead className="w-[140px] text-white">Date</TableHead>
                                 <TableHead className=' text-white'>Details</TableHead>
                                 <TableHead className=' text-white'>Amount</TableHead>
