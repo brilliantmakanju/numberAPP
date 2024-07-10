@@ -33,7 +33,7 @@ const VerticalTabs = () => {
             {/* Vertical tab navigation */}
             <ul className="flex w-full xl:w-[24rem] static xl:z-[1] xl:sticky bg-white lg:top-0 border rounded-lg shadow overflow-hidden h-[10.9rem] xl:h-[9.22rem] xl:py-[0rem] list-none flex-col justify-start items-start ">
                 {tabs.map((tab) => (
-                    <li key={tab.id} className=" w-full">
+                    <li key={tab.id} className=" w-full cursor-pointer">
                         <span
                             onClick={() => handleTabClick(tab.id)}
                             className={`w-full flex justify-start items-center py-3 ${activeTab === tab.id ? 'bg-black text-white' : 'text-black bg-white hover:bg-black hover:bg-opacity-65 hover:text-white'} transition-all ease-in-out duration-300 px-[30px]`}
