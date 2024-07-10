@@ -14,8 +14,8 @@ const Nav_Mobile_Sidebar = ({ open }: NavSideMobile) => {
                     <div className='h-full flex flex-col justify-between items-start'>
                         <ul className=" flex flex-col justify-start items-start gap-[10px] p-3">
                             <SidebarLinks icon={<LayoutDashboard size={20} />} href='/dashboard' writing='Dashboard' iconOnly={iconOnly} />
-                            <SidebarLinks icon={<Bookmark size={20} />} href='/saved' writing='Saved Jobs' iconOnly={iconOnly} />
-                            <SidebarLinks icon={<Rocket size={20} />} href='/application' writing='Application Jobs' iconOnly={iconOnly} />
+                            {/* <SidebarLinks icon={<Bookmark size={20} />} href='/saved' writing='Saved Jobs' iconOnly={iconOnly} /> */}
+                            <SidebarLinks icon={<Rocket size={20} />} href='/application' writing='Applied Jobs' iconOnly={iconOnly} />
                         </ul>
 
                         <div className="border-t flex p-3">

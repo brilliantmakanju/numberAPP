@@ -14,11 +14,6 @@ import Markdowns from '../markdown'
 import { Button } from '@/components/ui/button'
 
 const Jobsearchcard = ({ logo, role, company, posted, liked, brief, description }: JobSearchCardProps) => {
-
-
-
-
-
     return (
         <Dialog>
             <DialogTrigger asChild>
@@ -46,7 +41,7 @@ const Jobsearchcard = ({ logo, role, company, posted, liked, brief, description 
                     </div>
                 </Card>
             </DialogTrigger>
-            <DialogContent className="h-screen md:h-[50rem] flex flex-col justify-start items-start max-w-full md:max-w-[40rem] overflow-hidden overflow-y-scroll description outline-none ">
+            <DialogContent className="h-screen md:h-[50rem] flex flex-col justify-start items-start max-w-full md:max-w-[40rem] overflow-hidden overflow-y-scroll description outline-none pb-0 ">
                 <DialogTitle className='hidden'>{role} - {company} - {posted} </DialogTitle>
                 <DialogDescription className='hidden'>
                     Apply Now
@@ -67,11 +62,33 @@ const Jobsearchcard = ({ logo, role, company, posted, liked, brief, description 
                 </div>
                 <div className='flex flex-col justify-start items-start h-full text-[14px] overflow-hidden overflow-y-scroll break-words descriptions w-[105%] sm:w-[102%] md:w-[38.3rem] '>
                     <Markdowns content={description} />
-                </div>
-                <div className='flex sticky bg-transparent bottom-[-10px] pb-[10px] left-0 justify-center px-[10px] items-center w-full'>
-                    <Button className='w-full py-[22.5px] text-[16px] text-white bg-black '>
-                        Apply Now
-                    </Button>
+
+
+                    <div className='w-full flex flex-col mt-[20px] justify-start gap-[10px] pb-[10px] items-start'>
+                        <h3 className='text-[18px] font-semibold'>Resources used</h3>
+                        <div className='w-full flex flex-wrap'>
+                            <div className='flex w-full gap-[12px] pr-[10px] justify-between items-start '>
+                                <div className="flex flex-col items-center justify-center w-full h-[7rem] border border-black border-dashed rounded-lg cursor-pointer">
+                                    <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                                        {/* <p className="mb-2 text-sm text-gray-500 dark:text-gray-400"> */}
+                                        <span className="font-semibold">
+                                            Uploaded Resume
+                                        </span>
+                                        {/* </p> */}
+                                    </div>
+                                </div>
+                                <div className="flex flex-col items-center justify-center w-full h-[7rem] border border-black border-dashed rounded-lg cursor-pointer">
+                                    <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                                        {/* <p className="mb-2 text-sm text-gray-500 dark:text-gray-400"> */}
+                                        <span className="font-semibold">
+                                            Uploaded CV
+                                        </span>
+                                        {/* </p> */}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </DialogContent>
         </Dialog>
