@@ -17,7 +17,7 @@ const Social_Login = () => {
     }
 
     return (
-        <Card className="w-full shadow-none border-0 flex flex-col justify-center items-center gap-[14px] ">
+        <Card className="w-full shadow-none border-0 flex flex-col justify-center items-center gap-[14px]">
             <Button onClick={() => OnClick("google")} className='w-full flex justify-start items-center py-[1.5rem] gap-[5px] rounded-[20px] shadow-none bg-black text-white border hover:bg-black hover:bg-opacity-95 transition-all ease-in-out duration-300' >
                 <div className='flex relative justify-center items-center w-[40px] h-[40px] '>
                     <Image
