@@ -20,12 +20,12 @@ const Subcription = () => {
 
 
     return (
-        <div className='w-full overflow-hidden overflow-y-scroll h-full descriptions flex flex-col p-[10px] justify-start items-start'>
+        <div className='w-full overflow-hidden overflow-y-scroll h-full descriptions flex flex-col p-[10px] pb-[11.5rem] md:px-[20px] xl:pb-[0px] justify-start items-start'>
             <div className='flex gap-[5px] flex-col justify-start items-start'>
-                <h1 className='text-[18px] font-semibold'>Plan</h1>
+                <h1 className='text-[18px] font-semibold'>Current Plan</h1>
             </div>
 
-            <div className='w-full pb-[18px] mt-[20px] grid grid-cols-2 gap-[20px] '>
+            <div className='w-full pb-[18px] mt-[20px] grid grid-cols-1 gap-[20px] '>
                 <div className='w-full flex  border rounded-lg shadow flex-col justify-between items-start h-[10rem] px-3 py-3'>
                     <div className='w-full  flex justify-between items-center'>
                         <div className='w-full flex flex-col justify-start items-start'>
@@ -38,13 +38,13 @@ const Subcription = () => {
                         </span>
                     </div>
                     <div className='w-full flex justify-start items-start'>
-                        <Button className='w-full bg-black py-7 md:w-[20rem]' >
+                        <Button className='w-full bg-black bg-opacity-80 font-semibold py-7' >
                             Upgrade
                         </Button>
                     </div>
                 </div>
 
-                <div className='w-full flex border rounded-lg shadow flex-col justify-between items-start h-[10rem] px-3 py-3'>
+                {/* <div className='w-full flex border rounded-lg shadow flex-col justify-between items-start h-[10rem] px-3 py-3'>
                     <div className='w-full  flex justify-between items-center'>
                         <div className='w-full flex flex-col justify-start items-start'>
                             <h4 className='text-[18px] font-[500]'>Beginner</h4>
@@ -60,7 +60,7 @@ const Subcription = () => {
                             Cancel Subscription
                         </Button>
                     </div>
-                </div>
+                </div> */}
             </div>
 
             <div className='flex w-full flex-col justify-start items-start mt-[25px] '>
@@ -68,7 +68,7 @@ const Subcription = () => {
                     <h1 className='text-[18px] font-semibold'>Payment Method</h1>
                 </div>
 
-                <div className='w-full mt-[20px] grid grid-cols-2 gap-[20px] '>
+                <div className='w-full mt-[20px] grid grid-cols-1 md:grid-cols-2 gap-[20px] '>
                     <div className='w-full flex  border rounded-lg shadow flex-col justify-between items-start h-[10rem] px-3 py-3'>
                         <div className='w-full flex-col flex justify-between items-center'>
                             <div className='w-full flex flex-col justify-start items-start'>

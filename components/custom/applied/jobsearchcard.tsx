@@ -64,10 +64,10 @@ const Jobsearchcard = ({ logo, role, company, posted, liked, brief, description 
                     <Markdowns content={description} />
 
 
-                    <div className='w-full flex flex-col mt-[20px] justify-start gap-[10px] pb-[10px] items-start'>
+                    <div className='w-full flex flex-col mt-[20px] justify-start gap-[10px] pb-[1rem] lg:pb-[10px] items-start'>
                         <h3 className='text-[18px] font-semibold'>Resources used</h3>
                         <div className='w-full flex flex-wrap'>
-                            <div className='flex w-full gap-[12px] pr-[10px] justify-between items-start '>
+                            <div className='flex flex-col md:flex-row w-full gap-[12px] pr-[10px] justify-between items-start '>
                                 <div className="flex flex-col items-center justify-center w-full h-[7rem] border border-black border-dashed rounded-lg cursor-pointer">
                                     <div className="flex flex-col items-center justify-center pt-5 pb-6">
                                         {/* <p className="mb-2 text-sm text-gray-500 dark:text-gray-400"> */}

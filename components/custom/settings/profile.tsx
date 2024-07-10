@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import { CameraIcon, LinkedinIcon } from 'lucide-react'
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Input } from '@/components/ui/input'
@@ -8,17 +8,17 @@ import Image from 'next/image'
 import { GitHubLogoIcon } from '@radix-ui/react-icons'
 
 const Profile = () => {
+
+    const [changename, setChangename] = useState(true)
+    const [changeemail, setChangemail] = useState(true)
+
+
     return (
-        <div className='w-full overflow-hidden overflow-y-scroll h-full descriptions flex flex-col p-[10px] justify-start items-center'>
+        <div className='w-full overflow-hidden overflow-y-scroll  h-[40rem] xl:h-full descriptions flex flex-col p-[10px] pb-[3rem] md:px-[20px] xl:pb-[0px] justify-start items-start'>
             <div className='w-full gap-[20px] flex flex-col justify-start items-start'>
 
-                <div className='flex gap-[5px] flex-col justify-start items-start'>
-                    <h1 className='text-[24px] font-semibold'>Profile</h1>
-                    <p className='text-[16px] text-gray-500 dark:text-gray-400'>Edit your profile details</p>
-                </div>
-
-                <div className='flex justify-start gap-[20px] flex-col items-start pt-[18px] pb-[10px] border-y-2 w-full '>
-                    <div className='w-full flex justify-between  items-center'>
+                <div className='flex justify-start gap-[20px] flex-col items-start pt-[18px] pb-[10px] border-b-2 w-full '>
+                    <div className='w-full flex flex-col md:flex-row justify-between  items-center'>
                         <div className='flex justify-start items-center gap-[10px] w-full'>
                             <Avatar className="w-[6rem] h-[6rem]">
                                 <AvatarImage src="https://github.com/shadcn.png" />
@@ -30,7 +30,7 @@ const Profile = () => {
                             </div>
                         </div>
 
-                        <Button variant={'outline'} className='shadow border px-5 text-[#6b6a6a] py-3 '>Upload new picture</Button>
+                        <Button variant={'outline'} className='shadow border mt-[20px] w-full md:w-[300px] px-5 text-[#6b6a6a] py-3 '>Upload new picture</Button>
                     </div>
 
                     <div className='w-full flex flex-col gap-[14px] pb-[8px]'>
@@ -38,12 +38,20 @@ const Profile = () => {
                         <div className='w-full flex justify-start items-start gap-[14px]'>
                             <div className='flex flex-col w-full gap-[5px]'>
                                 <span className='text-[12px] font-[450]'>First name</span>
-                                <Input value={"Brilliant"} disabled aria-disabled className='py-5 disabled:bg-opacity-5 disabled:bg-[#a3a2a2] disabled:border disabled:opacity-80 ' />
+                                <Input value={"Brilliant"} disabled={!changename} aria-disabled={!changename} className='py-5 disabled:bg-opacity-5 disabled:bg-[#a3a2a2] disabled:border disabled:opacity-80 ' />
                             </div>
                             <div className='flex flex-col w-full gap-[5px]'>
                                 <span className='text-[12px] font-[450]'>Last name</span>
-                                <Input value={"Makanju"} disabled aria-disabled className='py-5 disabled:bg-opacity-5 disabled:bg-[#a3a2a2] disabled:border disabled:opacity-80' />
+                                <Input placeholder='Makanju' disabled={!changename} aria-disabled={!changename} className='py-5 disabled:bg-opacity-5 disabled:bg-[#a3a2a2] disabled:border disabled:opacity-80' />
                             </div>
+                        </div>
+                        <div className='flex w-full justify-end items-end gap-[10px] '>
+                            {
+                                changename &&
+                                <Button onClick={() => setChangename(false)} className='shadow px-5 text-[#ffffff] py-3'>Save changes</Button>
+
+                            }
+                            <Button onClick={() => setChangename(!changename)} variant={'outline'} className='shadow border px-5 text-[#6b6a6a] py-3 '>Change name</Button>
                         </div>
                     </div>
                 </div>
@@ -52,8 +60,16 @@ const Profile = () => {
                     <div className='w-full flex justify-start items-start gap-[14px]'>
                         <div className='flex flex-col w-full gap-[5px]'>
                             <span className='text-[12px] font-[450]'>Email</span>
-                            <Input value={"brilliantmakanju7@gmail.com"} disabled aria-disabled className='py-5 disabled:bg-opacity-5 disabled:bg-[#a3a2a2] disabled:border disabled:opacity-80' />
+                            <Input value={"brilliantmakanju7@gmail.com"} disabled={!changeemail} aria-disabled={!changeemail} className='py-5 disabled:bg-opacity-5 disabled:bg-[#a3a2a2] disabled:border disabled:opacity-80' />
                         </div>
+                    </div>
+                    <div className='flex w-full justify-end items-end gap-[10px]'>
+                        {
+                            changeemail &&
+                            <Button onClick={() => setChangemail(false)} className='shadow px-5 text-[#ffffff] py-3'>Save changes</Button>
+                        }
+                        <Button onClick={() => setChangemail(!changeemail)} variant={'outline'} className='shadow border px-5 text-[#6b6a6a] py-3 '>Change email</Button>
+
                     </div>
                 </div>
 
