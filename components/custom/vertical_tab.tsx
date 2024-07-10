@@ -28,7 +28,7 @@ const VerticalTabs = () => {
 
 
     return (
-        <div className="flex flex-col h-full xl:flex-row shadow-lg rounded-lg border overflow-hidden ">
+        <div className="flex flex-col h-auto xl:flex-row shadow-lg rounded-lg border overflow-hidden overflow-y-scroll ">
             {/* Vertical tab navigation */}
             <ul className="flex w-auto list-none flex-col justify-start items-start ">
                 {tabs.map((tab) => (
@@ -45,12 +45,12 @@ const VerticalTabs = () => {
             </ul>
 
             {/* Tab content */}
-            <div className="h-full w-full md:w-[40rem] ">
+            <div className="h-full bg-white descriptions xl:rounded-r-lg  overflow-hidden overflow-y-scroll w-full md:w-[40rem] ">
                 {tabs.map((tab) => (
                     <div
                         key={`content-${tab.id}`}
                         className={`${activeTab === tab.id ? 'block opacity-100' : 'hidden opacity-0'
-                            } transition-all ease-in-out duration-300 rounded-r-lg  bg-white  w-full h-full  `}
+                            } transition-all ease-in-out duration-300    w-full h-auto  `}
                     >
                         {tab.content}
                     </div>

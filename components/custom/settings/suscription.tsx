@@ -20,7 +20,7 @@ const Subcription = () => {
 
 
     return (
-        <div className='w-full overflow-hidden overflow-y-scroll  h-full descriptions flex flex-col p-[10px] pb-[10rem] md:px-[20px] xl:pb-[0px] justify-start items-start'>
+        <div className='w-full h-auto  flex flex-col p-[10px]  md:px-[20px] xl:pb-[0px] justify-start items-start'>
             <div className='flex gap-[5px] flex-col justify-start items-start'>
                 <h1 className='text-[18px] font-semibold'>Current Plan</h1>
             </div>

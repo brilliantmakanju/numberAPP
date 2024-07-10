@@ -14,7 +14,7 @@ const Profile = () => {
 
 
     return (
-        <div className='w-full overflow-hidden overflow-y-scroll  h-full descriptions flex flex-col p-[10px] pb-[7rem] md:px-[20px] xl:pb-[0px] justify-start items-start'>
+        <div className='w-full  h-auto descriptions flex flex-col p-[10px]  md:px-[20px] xl:pb-[0px] justify-start items-start'>
             <div className='w-full gap-[20px] flex flex-col justify-start items-start'>
 
                 <div className='flex justify-start gap-[20px] flex-col items-start pt-[18px] pb-[10px] border-b-2 w-full '>
@@ -73,7 +73,7 @@ const Profile = () => {
                     </div>
                 </div>
 
-                <div className='w-full flex flex-col gap-[14px] pb-[5rem] md:pb-[0px]'>
+                <div className='w-full flex flex-col gap-[14px]'>
                     <div className='flex gap-[2.5px] flex-col justify-start items-start'>
                         <h1 className='text-[16px] font-semibold'>Connected Account</h1>
                         <p className='text-[12px] text-gray-500 dark:text-gray-400'>Manage connected account</p>
