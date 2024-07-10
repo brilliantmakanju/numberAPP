@@ -52,7 +52,7 @@ const Jobsearchcard = ({ logo, role, company, posted, liked, brief, description 
                 <DialogDescription className='hidden'>
                     Apply Now
                 </DialogDescription>
-                <div className='flex mt-[20px] flex-row w-full justify-between items-start'>
+                <div className='flex mt-[20px] pt-[10px] flex-row w-full justify-between items-start'>
                     <div className='flex flex-row gap-[14px] justify-start items-start'>
                         <div className='w-[40px]  h-[2.5rem] relative'>
                             <Image src={`${logo}`} alt='Number One Career Logo' width={999} height={999} className={`w-full h-full absolute top-0 left-0`} />
@@ -69,7 +69,7 @@ const Jobsearchcard = ({ logo, role, company, posted, liked, brief, description 
                 <div className='flex flex-col justify-start items-start h-full text-[14px] overflow-hidden overflow-y-scroll break-words descriptions w-[105%] sm:w-[102%] md:w-[38.3rem] '>
                     <Markdowns content={description} />
                 </div>
-                <div className='flex sticky bg-transparent bottom-[-10px] left-0 justify-center px-[10px] items-center w-full'>
+                <div className='flex sticky bg-transparent bottom-[-10px] pb-[10px] left-0 justify-center px-[10px] items-center w-full'>
                     <Button className='w-full py-[22.5px] text-[16px] text-white bg-black '>
                         Apply Now
                     </Button>
