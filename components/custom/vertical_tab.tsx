@@ -3,13 +3,13 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import Profile from './settings/profile';
+import Subcription from './settings/suscription';
 
 // Define tab items with their respective content
 const tabs = [
-    { id: 'tabs-home03', label: 'Profile', content: <Profile /> },
-    { id: 'tabs-settings03', label: 'Security', content: 'Tab 4 content' },
-    { id: 'tabs-messages03', label: 'Subscription', content: 'Tab 3 content' },
-    { id: 'tabs-profile03', label: 'Application Settings', content: 'Tab 2 content' },
+    { id: 'tabs-profile', label: 'Profile', content: <Profile /> },
+    { id: 'tabs-subscription', label: 'Subscription', content: <Subcription /> },
+    { id: 'tabs-application', label: 'Application Settings', content: 'Tab 2 content' },
 ];
 
 const VerticalTabs = () => {
@@ -28,15 +28,15 @@ const VerticalTabs = () => {
 
 
     return (
-        <div className="flex shadow-lg rounded-lg border ">
+        <div className="flex shadow-lg rounded-lg border overflow-hidden ">
             {/* Vertical tab navigation */}
-            <ul className="flex w-auto rounded-l-lg py-[10px] pl-[20px] list-none flex-col gap-[2px] justify-start items-start ">
+            <ul className="flex w-auto list-none flex-col justify-start items-start ">
                 {tabs.map((tab) => (
                     <li key={tab.id} className=" w-full">
                         <Link
                             href={`#${tab.id}`}
                             onClick={() => handleTabClick(tab.id)}
-                            className={`w-full rounded-l-[30px] flex justify-start items-center py-3 ${activeTab === tab.id ? 'bg-black text-white' : 'text-black bg-white hover:bg-black hover:bg-opacity-65 hover:text-white'} transition-all ease-in-out duration-300 px-[30px]`}
+                            className={`w-full flex justify-start items-center py-3 ${activeTab === tab.id ? 'bg-black text-white' : 'text-black bg-white hover:bg-black hover:bg-opacity-65 hover:text-white'} transition-all ease-in-out duration-300 px-[30px]`}
                         >
                             {tab.label}
                         </Link>
