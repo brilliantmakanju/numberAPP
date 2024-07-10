@@ -117,7 +117,7 @@ const Subcription = () => {
                     <h1 className='text-[18px] font-semibold'>Billing History</h1>
                 </div>
 
-                <div className='w-full flex mt-[14px] justify-start items-start'>
+                <div className='w-full flex mt-[14px] mb-[3rem] md:mb-[0px] justify-start items-start'>
                     <Table>
                         {/* <TableCaption>A list of your recent invoices.</TableCaption> */}
                         <TableHeader>

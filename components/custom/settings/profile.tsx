@@ -73,7 +73,7 @@ const Profile = () => {
                     </div>
                 </div>
 
-                <div className='w-full flex flex-col gap-[14px] pb-[18px]'>
+                <div className='w-full flex flex-col gap-[14px] pb-[3rem] md:pb-[0px]'>
                     <div className='flex gap-[2.5px] flex-col justify-start items-start'>
                         <h1 className='text-[16px] font-semibold'>Connected Account</h1>
                         <p className='text-[12px] text-gray-500 dark:text-gray-400'>Manage connected account</p>
