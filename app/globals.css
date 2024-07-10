@@ -107,3 +107,7 @@
   border-radius: 40px;
   background-color: black !important;
 }
+
+.login_popup svg{
+  display: none;
+}

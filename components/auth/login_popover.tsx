@@ -20,12 +20,12 @@ const Login_Popover = ({ icon, actionName, children }: Popover) => {
                     {actionName}
                 </button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-md">
+            <DialogContent className="max-w-[24rem] rounded-[2.4rem] sm:rounded-[2.4rem]  login_popup">
                 <DialogHeader>
-                    {/* <DialogTitle>Share link</DialogTitle> */}
-                    {/* <DialogDescription>
-                        Anyone who has this link will be able to view this.
-                    </DialogDescription> */}
+                    <DialogTitle className='hidden'>Login</DialogTitle>
+                    <DialogDescription className='hidden'>
+                        User gets authenticated using the specified oauthlogin provider.
+                    </DialogDescription>
                 </DialogHeader>
                 {children}
                 <DialogFooter className="sm:justify-start">

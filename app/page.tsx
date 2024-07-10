@@ -60,9 +60,8 @@ export default async function Home() {
       </div>
         :
         <div className="flex flex-col justify-start items-start gap-[10px]">
-          <Social_Login />
-          <Login_Popover actionName="Open Dev">
-            Development
+          <Login_Popover actionName="Login">
+            <Social_Login />
           </Login_Popover>
         </div>
       }
