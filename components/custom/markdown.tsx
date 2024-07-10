@@ -26,7 +26,7 @@ const Markdowns = ({ content }: Markdown) => {
             else if (line.startsWith('## ')) {
                 // Handle headers
                 const headerText = line.replace('## ', '');
-                elements.push(<h2 className='text-[22px] font-bold mb-[5px] ' key={`header-${index}`}>{headerText}</h2>);
+                elements.push(<h2 className='text-[18px] font-bold mb-[5px] ' key={`header-${index}`}>{headerText}</h2>);
             } else if (line.startsWith('- ')) {
                 // Handle list items
                 const listItemText = line.replace('- ', '');
