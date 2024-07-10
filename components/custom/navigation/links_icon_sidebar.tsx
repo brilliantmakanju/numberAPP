@@ -28,7 +28,7 @@ const SidebarLinks = ({ icon, iconOnly, writing, href }: SidebarLinksProps) => {
                                 {icon}
 
                                 {/* {iconOnly && */}
-                                    <span className={`overflow-hidden flex justify-start items-center transition-all w-0 ml-0 lg:w-52 lg:ml-3 `}>{writing}</span>
+                                    <span className={`overflow-hidden flex justify-start items-center transition-all w-52 ml-3 md:w-0 md:ml-0 lg:w-52 lg:ml-3 `}>{writing}</span>
                                 {/* } */}
                             </TooltipTrigger>
                             <TooltipContent sideOffset={18} side={'right'} className='rounded-md px-2 py-1 bg-white text-black text-sm'>

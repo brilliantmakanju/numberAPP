@@ -8,7 +8,9 @@ import { Button } from "@/components/ui/button";
 const Social_Login = () => {
 
     const OnClick = (provider: "google" | "twitter" | "linkedin" | "github" ) => {
-        signIn(provider)
+        signIn(provider, {
+            redirect: false
+        })
     }
 
     return (

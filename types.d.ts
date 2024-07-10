@@ -25,3 +25,21 @@ interface Popover {
     actionName: string
     children: React.ReactNode
 }
+
+interface NavSideMobile {
+    open: boolean
+}
+
+interface Markdown {
+    content: string
+}
+
+interface JobSearchCardProps {
+    logo: string
+    role: string
+    company: string
+    posted: string
+    liked: boolean
+    brief: string
+    description: string
+}
