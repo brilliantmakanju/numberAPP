@@ -27,41 +27,46 @@ const Subcription = () => {
             </div>
 
             <div className='w-full pb-[18px] mt-[20px] grid grid-cols-1 gap-[20px] '>
-                <div className='w-full flex  border rounded-lg shadow flex-col justify-between items-start h-[10rem] px-3 py-3'>
+                <div className='w-full flex  border rounded-lg shadow flex-col justify-start gap-[35px] items-start h-[10rem] px-3 py-3'>
                     <div className='w-full  flex justify-between items-center'>
                         <div className='w-full flex flex-col justify-start items-start'>
-                            <h4 className='text-[18px] font-[500]'>Free</h4>
-                            {/* <span className='text-[12px] font-[300] text-gray-400'>30 days remaning</span> */}
+                            <h4 className='text-[18px] font-[500]'>Basic</h4>
+                            <span className='text-[12px] font-[300] text-gray-400'>30 days remaning</span>
                         </div>
                         <span className='text-[18px] flex justify-start items-start'>
-                            <span className='font-[500] text-black'>$0/</span>
+                            <span className='font-[500] text-black'>$5/</span>
                             <span className='text-gray-400'>month</span>
                         </span>
                     </div>
                     <div className='w-full flex justify-start items-start'>
-                        <Button className='w-full bg-black bg-opacity-80 font-semibold py-7' >
-                            Upgrade
+                        <Button variant={'outline'} className='w-full py-7 md:py-6 md:w-[15rem]  font-semibold ' >
+                            Cancel Subscription
                         </Button>
                     </div>
                 </div>
 
-                {/* <div className='w-full flex border rounded-lg shadow flex-col justify-between items-start h-[10rem] px-3 py-3'>
+                <div className='w-full flex border rounded-lg shadow flex-col bg-black justify-start gap-[45px] items-start h-[10rem] px-3 py-3'>
                     <div className='w-full  flex justify-between items-center'>
                         <div className='w-full flex flex-col justify-start items-start'>
-                            <h4 className='text-[18px] font-[500]'>Beginner</h4>
-                            <span className='text-[12px] font-[300] text-gray-400'>30 days remaning</span>
+                            <h4 className='text-[18px] text-white font-[500]'>Pro</h4>
+                            <span className='text-[12px] font-[300] text-gray-400'>Monthly</span>
                         </div>
                         <span className='text-[18px] flex justify-start items-start'>
-                            <span className='font-[500] text-black'>$10/</span>
+                            <span className='font-[500] text-white'>$10/</span>
                             <span className='text-gray-400'>month</span>
                         </span>
                     </div>
-                    <div className='w-full flex justify-start items-start'>
-                        <Button variant={'outline'} className='w-full py-7 md:w-[20rem]' >
+                    <div className='w-full flex justify-start items-center md:ml-[5px] gap-[10px] '>
+                        {/* <Button variant={'outline'} className='w-full py-7 md:w-[20rem]' >
                             Cancel Subscription
+                        </Button> */}
+                        <Button variant={'outline'} className='w-full py-7 md:py-5 md:w-auto md:px-7' >
+                            Upgrade
                         </Button>
+                        <span className='text-[12px] font-[400] text-white'> Learn more about this plan</span>
+
                     </div>
-                </div> */}
+                </div>
             </div>
 
             <div className='flex w-full flex-col justify-start items-start mt-[25px] '>
@@ -132,8 +137,8 @@ const Subcription = () => {
                             {times.map((_, index) => (
                                 <TableRow key={index} className='h-[3rem]'>
                                     <TableCell className="font-medium">08/07/2021</TableCell>
-                                    <TableCell>Beginner Plan, monthly</TableCell>
-                                    <TableCell className="text-left">$250.00</TableCell>
+                                    <TableCell>Basic Plan, monthly</TableCell>
+                                    <TableCell className="text-left">$5.00</TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>

@@ -1,17 +1,49 @@
 'use client'
-import React, { useState } from 'react'
-import { CameraIcon, LinkedinIcon } from 'lucide-react'
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import Image from 'next/image'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
-import Image from 'next/image'
+import { currentUser } from '@/lib/current_user'
+import React, { useEffect, useState } from 'react'
 import { GitHubLogoIcon } from '@radix-ui/react-icons'
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog"
+import { Label } from '@/components/ui/label'
 
 const Profile = () => {
 
+    const [formData, setFormData] = useState({ fname: '', lname: '' });
     const [changename, setChangename] = useState(false)
-    const [changeemail, setChangemail] = useState(false)
+    const [users, setUser] = useState<any>()
 
+
+    const getSessions = async () => {
+        const session = await currentUser()
+        const name = session?.name || ''
+        const [first, last] = name.split(' ')
+        setFormData({ ...formData, fname: first, lname: last });
+        setUser(session)
+    }
+
+    useEffect(() => {
+        getSessions()
+    }, [])
+
+
+    const handleInputChange = ({ event, name }: {
+        event: React.ChangeEvent<HTMLInputElement>,
+        name: string,
+    }) => {
+        const { value } = event.target;
+        setFormData({ ...formData, [name]: value })
+    };
 
     return (
         <div className='w-full  h-auto descriptions flex flex-col p-[10px]  md:px-[20px] xl:pb-[0px] justify-start items-start'>
@@ -21,7 +53,7 @@ const Profile = () => {
                     <div className='w-full flex flex-col md:flex-row justify-between  items-center'>
                         <div className='flex justify-start items-center gap-[10px] w-full'>
                             <Avatar className="w-[6rem] h-[6rem]">
-                                <AvatarImage src="https://github.com/shadcn.png" />
+                                <AvatarImage src={`${users?.image ? `${users.image}` : 'https://github.com/shadcn.png'}`} />
                                 <AvatarFallback>BM</AvatarFallback>
                             </Avatar>
                             <div className="flex gap-[2.5px] flex-col justify-start items-start">
@@ -29,8 +61,28 @@ const Profile = () => {
                                 <p className='text-[12px] text-gray-500 dark:text-gray-400'>PNG, JPEG under 15MB</p>
                             </div>
                         </div>
-
-                        <Button variant={'outline'} className='shadow border mt-[20px] w-full md:w-[300px] px-5 text-[#6b6a6a] py-3 '>Upload new picture</Button>
+                        <Dialog>
+                            <DialogTrigger asChild>
+                                <Button variant={'outline'} className='shadow border mt-[20px] w-full md:w-[300px] px-5 text-[#6b6a6a] py-3 '>Upload new picture</Button>
+                            </DialogTrigger>
+                            <DialogContent className="sm:max-w-[425px]">
+                                <DialogHeader>
+                                    <DialogTitle>Upload Files</DialogTitle>
+                                    <DialogDescription>Select the files you would like to upload.</DialogDescription>
+                                </DialogHeader>
+                                <div className="grid gap-4 py-4">
+                                    <div className="grid items-center grid-cols-4 gap-4">
+                                        <Label htmlFor="files" className="text-right">
+                                            Files
+                                        </Label>
+                                        <Input id="files" type="file" multiple className="col-span-3 cursor-pointer" />
+                                    </div>
+                                </div>
+                                <DialogFooter>
+                                    <Button type="submit">Upload</Button>
+                                </DialogFooter>
+                            </DialogContent>
+                        </Dialog>
                     </div>
 
                     <div className='w-full flex flex-col gap-[14px] pb-[8px]'>
@@ -38,11 +90,13 @@ const Profile = () => {
                         <div className='w-full flex justify-start items-start gap-[14px]'>
                             <div className='flex flex-col w-full gap-[5px]'>
                                 <span className='text-[12px] font-[450]'>First name</span>
-                                <Input value={"Brilliant"} disabled={!changename} aria-disabled={!changename} className='py-5 disabled:bg-opacity-5 disabled:bg-[#a3a2a2] disabled:border disabled:opacity-80 ' />
+                                <Input value={formData.fname}
+                                    onChange={(e) => handleInputChange({ event: e, name: 'fname' })} disabled={!changename} aria-disabled={!changename} className='py-5 disabled:bg-opacity-5 disabled:bg-[#a3a2a2] disabled:border disabled:opacity-80 ' />
                             </div>
                             <div className='flex flex-col w-full gap-[5px]'>
                                 <span className='text-[12px] font-[450]'>Last name</span>
-                                <Input placeholder='Makanju' disabled={!changename} aria-disabled={!changename} className='py-5 disabled:bg-opacity-5 disabled:bg-[#a3a2a2] disabled:border disabled:opacity-80' />
+                                <Input value={formData.lname}
+                                    onChange={(e) => handleInputChange({ event: e, name: 'lname' })} disabled={!changename} aria-disabled={!changename} className='py-5 disabled:bg-opacity-5 disabled:bg-[#a3a2a2] disabled:border disabled:opacity-80' />
                             </div>
                         </div>
                         <div className='flex w-full justify-end items-end gap-[10px] '>
@@ -60,43 +114,34 @@ const Profile = () => {
                     <div className='w-full flex justify-start items-start gap-[14px]'>
                         <div className='flex flex-col w-full gap-[5px]'>
                             <span className='text-[12px] font-[450]'>Email</span>
-                            <Input value={"brilliantmakanju7@gmail.com"} disabled={!changeemail} aria-disabled={!changeemail} className='py-5 disabled:bg-opacity-5 disabled:bg-[#a3a2a2] disabled:border disabled:opacity-80' />
+                            <Input value={`${users?.email}`} disabled aria-disabled className='py-5 disabled:bg-opacity-5 disabled:bg-[#a3a2a2] disabled:border disabled:opacity-80' />
                         </div>
-                    </div>
-                    <div className='flex w-full justify-end items-end gap-[10px]'>
-                        {
-                            changeemail &&
-                            <Button onClick={() => setChangemail(false)} className='shadow px-5 text-[#ffffff] py-3'>Save changes</Button>
-                        }
-                        <Button onClick={() => setChangemail(!changeemail)} variant={'outline'} className='shadow border px-5 text-[#6b6a6a] py-3 '>Change email</Button>
-
                     </div>
                 </div>
 
                 <div className='w-full flex flex-col gap-[14px]'>
                     <div className='flex gap-[2.5px] flex-col justify-start items-start'>
                         <h1 className='text-[16px] font-semibold'>Connected Account</h1>
-                        <p className='text-[12px] text-gray-500 dark:text-gray-400'>Manage connected account</p>
+                        <p className='text-[12px] text-gray-500 dark:text-gray-400'>View connected account</p>
                     </div>
                     <div className='w-full flex flex-col justify-start items-start gap-[14px]'>
 
                         <div className='w-full rounded-lg shadow border py-[14px] px-[20px] flex justify-between items-center'>
-                            <div className='flex relative h-[4rem] border rounded-lg w-[4rem] bg-[#e1e0e0] bg-opacity-50 justify-center items-center p-[5px] '>
-                                <Image
-                                    width={999}
-                                    height={999}
-                                    alt='Google Logo'
-                                    src={'/svg/logo_google.svg'}
-                                    className='w-full h-full'
-                                />
-                            </div>
-                            <Button variant={'outline'} className='shadow border-[2px] border-[#4BB543] px-5 text-[#4BB543] py-3 hover:bg-[#4BB543] hover:text-white ' >connected</Button>
-                        </div>
+                            {users?.access_all?.provider === 'google' ?
+                                <div className='flex relative h-[4rem] border rounded-lg w-[4rem] bg-[#e1e0e0] bg-opacity-50 justify-center items-center p-[5px] '>
+                                    <Image
+                                        width={999}
+                                        height={999}
+                                        alt='Google Logo'
+                                        src={'/svg/logo_google.svg'}
+                                        className='w-full h-full'
+                                    />
+                                </div> :
+                                <div className='flex relative h-[4rem] border rounded-lg w-[4rem] bg-[#e1e0e0] bg-opacity-50 justify-center items-center p-[5px] '>
+                                    <GitHubLogoIcon className='w-[2rem] h-[2rem] ' />
+                                </div>
 
-                        <div className='w-full rounded-lg shadow border py-[14px] px-[20px] flex justify-between items-center'>
-                            <div className='flex relative h-[4rem] border rounded-lg w-[4rem] bg-[#e1e0e0] bg-opacity-50 justify-center items-center p-[5px] '>
-                                <GitHubLogoIcon className='w-[2rem] h-[2rem] ' />
-                            </div>
+                            }
                             <Button variant={'outline'} className='shadow border-[2px] border-[#4BB543] px-5 text-[#4BB543] py-3 hover:bg-[#4BB543] hover:text-white ' >connected</Button>
                         </div>
 
