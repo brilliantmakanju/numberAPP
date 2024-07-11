@@ -2,7 +2,7 @@
 
 
 export async function extractCookies(cookiesString: string | null, cookieNames: string[]){
-    console.log(cookiesString)
+    // console.log(cookiesString)
     const cookies = new Map<string, string>();
 
     if (cookiesString) {

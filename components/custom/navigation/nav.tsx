@@ -2,14 +2,28 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { X } from 'lucide-react';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import Nav_Mobile_Sidebar from './nav_mobile_sidebar';
 import { HamburgerMenuIcon } from '@radix-ui/react-icons'
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import Nav_Mobile_Sidebar from './nav_mobile_sidebar';
+import { currentUser } from '@/lib/current_user';
 
 const TopNav = () => {
 
+    const [users, setUser] = useState<any>()
+
+    const getSessions = async () => {
+        const session = await currentUser()
+        setUser(session)
+    }
+
     const [showMenu, setShowMenu] = useState<boolean>(false)
+
+    useEffect(() => {
+        getSessions()
+    }, [])
+
+
 
     return (
         <>
@@ -33,7 +47,7 @@ const TopNav = () => {
                     </Link>
                 </div>
                 <Avatar>
-                    <AvatarImage src="https://github.com/shadcn.png" />
+                    <AvatarImage src={`${users?.image ? `${users.image}` : 'https://github.com/shadcn.png' }`} />
                     <AvatarFallback>BM</AvatarFallback>
                 </Avatar>
             </nav>

@@ -5,14 +5,12 @@ import Image from 'next/image';
 import { signIn } from "next-auth/react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { GitHubLogoIcon } from '@radix-ui/react-icons';
-import { FaGithub, FaGithubAlt } from 'react-icons/fa';
 
 const Social_Login = () => {
 
     const OnClick = (provider: "google" | "twitter" | "linkedin" | "github") => {
         signIn(provider, {
-            redirect: false
+            redirect: true
         })
     }
 
@@ -43,7 +41,6 @@ const Social_Login = () => {
                         className='w-full h-full absolute top-0 left-0'
                     />
                 </div>
-                <FaGithubAlt />
                 <span className='text-[14px] text-[#838181] font-semibold '>
                     Continue with Github
                 </span>

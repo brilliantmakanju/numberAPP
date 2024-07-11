@@ -39,17 +39,16 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         // })
 
         // const setCookieHeader = data.headers.get('set-cookie');
-        // const cookie = extractCookies(setCookieHeader, ['newAdd', 'rongtai']);
+        // const cookie = extractCookies(setCookieHeader, ['newAdd']);
+
+        // const response = await data.json()
+        // // console.log(response.access)
 
         // // console.log((await cookies))
 
         // // console.log()
-        // token.access_token = (await cookie).get("rongtai")
+        // token.access_token = response.access
         // token.refresh_token = (await cookie).get("newAdd")
-
-
-        // setCookie('newAdd', (await cookie).get("newAdd"), { cookies })
-        // setCookie('rongtai', (await cookie).get("rongtai"), { cookies })
 
       }
       return token
