@@ -29,7 +29,7 @@ const VerticalTabs = ({ tabs }: VerticalTabsprops) => {
 
     useEffect(() => {
         getInitialActiveTab()
-    });
+    }, []);
 
 
     return (
