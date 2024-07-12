@@ -1,3 +1,4 @@
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from '@vercel/analytics/react';
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
@@ -20,6 +21,7 @@ export default function RootLayout({
       <body className={` overflow-hidden ${inter.className}`}>
         {children}
         <Analytics />
+        <SpeedInsights />
         </body>
     </html>
   );
