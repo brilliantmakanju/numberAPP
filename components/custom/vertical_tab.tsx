@@ -1,7 +1,7 @@
 'use client'
-import React, { useEffect, useState } from 'react';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
+import {  useSearchParams } from 'next/navigation';
 
 const VerticalTabs = ({ tabs }: VerticalTabsprops) => {
     const router = useSearchParams();
@@ -9,7 +9,7 @@ const VerticalTabs = ({ tabs }: VerticalTabsprops) => {
     const [activeTab, setActiveTab] = useState<any>(tabs[0].id);
 
     function getInitialActiveTab() {
-        const tabId = tabs.find(tab => tab.id === activeTabDefault);
+        const tabId = tabs.find(tab => tab.id === activeTabDefault || tabs[0].id);
         // console.log(tabId);
         // setActiveTab(tabId);
         // console.log(activeTabDefault)
@@ -20,7 +20,7 @@ const VerticalTabs = ({ tabs }: VerticalTabsprops) => {
         // console.log(activeTab)
         // console.log(tabs)
         // console.log(tabs.find(tab => tab.id === activeTabDefault))
-        console.log(tabs.find(tab => tab.id === activeTabDefault || tabs[0].id))
+        // console.log(tabs.find(tab => tab.id === activeTabDefault || tabs[0].id))
     }
 
     const handleTabClick = (tabId: string) => {
@@ -29,7 +29,7 @@ const VerticalTabs = ({ tabs }: VerticalTabsprops) => {
 
     useEffect(() => {
         getInitialActiveTab()
-    }, []);
+    });
 
 
     return (
