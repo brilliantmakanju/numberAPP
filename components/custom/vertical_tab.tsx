@@ -1,31 +1,35 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
-import Profile from './settings/profile';
-import Subcription from './settings/suscription';
 
-// Define tab items with their respective content
-const tabs = [
-    { id: 'tabs-profile', label: 'Profile', content: <Profile /> },
-    { id: 'tabs-subscription', label: 'Subscription', content: <Subcription /> },
-    { id: 'tabs-application', label: 'Application Settings', content: <Subcription /> },
-];
+const VerticalTabs = ({ tabs }: VerticalTabsprops) => {
+    const router = useSearchParams();
+    const activeTabDefault = router.get('active')
+    const [activeTab, setActiveTab] = useState<any>(tabs[0].id);
 
-const VerticalTabs = () => {
-    const router = usePathname();
-    const [activeTab, setActiveTab] = useState(tabs[0].id);
-
-    // function getInitialActiveTab() {
-    //     // const { pathname } = router;
-    //     console.log(router)
-    //     const tabId = tabs.find(tab => router.includes(tab.id))?.id || tabs[0].id;
-    //     return tabId;
-    // }
+    function getInitialActiveTab() {
+        const tabId = tabs.find(tab => tab.id === activeTabDefault);
+        // console.log(tabId);
+        // setActiveTab(tabId);
+        // console.log(activeTabDefault)
+        // console.log(tabs)
+        // console.log(tabs.find(tab => tab.id === activeTabDefault))
+        // if (!activeTab) setActiveTab(tabId);
+        setActiveTab(tabId?.id);
+        // console.log(activeTab)
+        // console.log(tabs)
+        // console.log(tabs.find(tab => tab.id === activeTabDefault))
+        console.log(tabs.find(tab => tab.id === activeTabDefault || tabs[0].id))
+    }
 
     const handleTabClick = (tabId: string) => {
         setActiveTab(tabId);
     };
+
+    useEffect(() => {
+        getInitialActiveTab()
+    }, []);
 
 
     return (
@@ -34,12 +38,14 @@ const VerticalTabs = () => {
             <ul className="flex w-full xl:w-[24rem] static xl:z-[1] xl:sticky bg-white lg:top-0 border rounded-lg shadow overflow-hidden h-[10.9rem] xl:h-[9.22rem] xl:py-[0rem] list-none flex-col justify-start items-start ">
                 {tabs.map((tab) => (
                     <li key={tab.id} className=" w-full cursor-pointer">
-                        <span
-                            onClick={() => handleTabClick(tab.id)}
-                            className={`w-full flex justify-start items-center py-3 ${activeTab === tab.id ? 'bg-black text-white' : 'text-black bg-white hover:bg-black hover:bg-opacity-65 hover:text-white'} transition-all ease-in-out duration-300 px-[30px]`}
-                        >
-                            {tab.label}
-                        </span>
+                        <Link href={`?active=${tab.id}`}>
+                            <span
+                                onClick={() => handleTabClick(tab.id)}
+                                className={`w-full flex justify-start items-center py-3 ${activeTab === tab.id ? 'bg-black text-white' : 'text-black bg-white hover:bg-black hover:bg-opacity-65 hover:text-white'} transition-all ease-in-out duration-300 px-[30px]`}
+                            >
+                                {tab.label}
+                            </span>
+                        </Link>
                     </li>
                 ))}
             </ul>

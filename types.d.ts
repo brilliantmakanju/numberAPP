@@ -43,3 +43,14 @@ interface JobSearchCardProps {
     brief: string
     description: string
 }
+
+interface VerticalTabsProp {
+    id: string
+    label: string
+    content: React.ReactNode
+}
+
+interface VerticalTabsprops {
+    tabs: VerticalTabsProp[]
+
+}

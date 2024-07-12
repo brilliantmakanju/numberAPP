@@ -10,8 +10,11 @@ const Social_Login = () => {
 
     const OnClick = (provider: "google" | "twitter" | "linkedin" | "github") => {
         signIn(provider, {
-            redirect: true
+            callbackUrl: "/dashboard",
+            // Optional parameters
+            redirect: false, // Default: true, set to false to allow user to choose where to return to your application
         })
+
     }
 
     return (

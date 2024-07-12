@@ -26,7 +26,7 @@ const Subcription = () => {
                 <h1 className='text-[18px] font-semibold'>Current Plan</h1>
             </div>
 
-            <div className='w-full pb-[18px] mt-[20px] grid grid-cols-1 gap-[20px] '>
+            <div className='w-full pb-[18px] mt-[20px] grid grid-cols-1 lg:grid-cols-2 gap-[20px] '>
                 <div className='w-full flex  border rounded-lg shadow flex-col justify-start gap-[35px] items-start h-[10rem] px-3 py-3'>
                     <div className='w-full  flex justify-between items-center'>
                         <div className='w-full flex flex-col justify-start items-start'>

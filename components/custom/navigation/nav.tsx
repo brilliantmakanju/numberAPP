@@ -2,11 +2,21 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { X } from 'lucide-react';
+import { currentUser } from '@/lib/current_user';
 import React, { useEffect, useState } from 'react'
 import Nav_Mobile_Sidebar from './nav_mobile_sidebar';
 import { HamburgerMenuIcon } from '@radix-ui/react-icons'
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { currentUser } from '@/lib/current_user';
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { signOut } from 'next-auth/react';
+
 
 const TopNav = () => {
 
@@ -46,10 +56,34 @@ const TopNav = () => {
                         <Image src={`/images/logo-bg.png`} alt='Number One Career Logo' width={999} height={999} className={`w-[2rem] cursor-pointer h-[2.5rem] `} />
                     </Link>
                 </div>
-                <Avatar>
-                    <AvatarImage src={`${users?.image ? `${users.image}` : 'https://github.com/shadcn.png' }`} />
-                    <AvatarFallback>BM</AvatarFallback>
-                </Avatar>
+                <DropdownMenu>
+                    <DropdownMenuTrigger>
+                        <Avatar>
+                            <AvatarImage src={`${users?.image ? `${users.image}` : 'https://github.com/shadcn.png'}`} />
+                            <AvatarFallback>BM</AvatarFallback>
+                        </Avatar>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent>
+                        {/* <DropdownMenuLabel>Logout</DropdownMenuLabel> */}
+                        <DropdownMenuItem>
+                            <Link href={'/setting?active=profile'}>
+                                Profile
+                            </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem>
+                            <Link href={'/setting?active=subscription'}>
+                                Subscription
+                            </Link>
+                        </DropdownMenuItem>
+                        
+                        <DropdownMenuSeparator />
+                        <DropdownMenuItem onClick={() => signOut({
+                            callbackUrl: '/',
+                        })} className='bg-[#d51515] cursor-pointer text-white focus:bg-[#d51515] focus:text-white duration-300 ease-in-out transition-all '>Logout</DropdownMenuItem>
+                    </DropdownMenuContent>
+                </DropdownMenu>
+
+
             </nav>
 
             <Nav_Mobile_Sidebar open={showMenu} />
