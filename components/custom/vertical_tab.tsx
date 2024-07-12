@@ -9,18 +9,12 @@ const VerticalTabs = ({ tabs }: VerticalTabsprops) => {
     const [activeTab, setActiveTab] = useState<any>(tabs[0].id);
 
     function getInitialActiveTab() {
-        const tabId = tabs.find(tab => tab.id === activeTabDefault || tabs[0].id);
-        // console.log(tabId);
-        // setActiveTab(tabId);
-        // console.log(activeTabDefault)
-        // console.log(tabs)
-        // console.log(tabs.find(tab => tab.id === activeTabDefault))
-        // if (!activeTab) setActiveTab(tabId);
-        setActiveTab(tabId?.id);
-        // console.log(activeTab)
-        // console.log(tabs)
-        // console.log(tabs.find(tab => tab.id === activeTabDefault))
-        // console.log(tabs.find(tab => tab.id === activeTabDefault || tabs[0].id))
+        const tabIdFind = tabs.find(tab => tab.id === activeTabDefault)
+        if (tabIdFind){
+            setActiveTab(tabIdFind.id)
+        } else {
+            setActiveTab(tabs[0].id);
+        }
     }
 
     const handleTabClick = (tabId: string) => {

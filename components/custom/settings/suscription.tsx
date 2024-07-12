@@ -60,7 +60,7 @@ const Subcription = () => {
                         {/* <Button variant={'outline'} className='w-full py-7 md:w-[20rem]' >
                             Cancel Subscription
                         </Button> */}
-                        <Button variant={'outline'} className='w-full py-7 md:py-5 md:w-auto md:px-7' >
+                        <Button variant={'outline'} className='w-full py-5 md:py-5 md:w-auto md:px-7' >
                             Upgrade
                         </Button>
                         <span className='text-[12px] font-[400] text-white'> Learn more about this plan</span>
