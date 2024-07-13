@@ -54,3 +54,13 @@ interface VerticalTabsprops {
     tabs: VerticalTabsProp[]
 
 }
+
+
+interface MutliSelectProps {
+    value: string[];
+    disabled: boolean
+    optionLabel: string;
+    placeholder?: string;
+    options: { label: string; value: string }[];
+    onChange: (event: { value: string[] }) => void;
+}

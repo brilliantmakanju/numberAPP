@@ -1,3 +1,4 @@
+import ApplicationDetails from '@/components/custom/settings/application_details'
 import Profile from '@/components/custom/settings/profile'
 import Subcription from '@/components/custom/settings/suscription'
 import VerticalTabs from '@/components/custom/vertical_tab'
@@ -8,7 +9,7 @@ const Settings = () => {
     const tabs = [
         { id: 'profile', label: 'Profile', content: <Profile /> },
         { id: 'subscription', label: 'Subscription', content: <Subcription /> },
-        { id: 'application', label: 'Application Settings', content: <Subcription /> },
+        { id: 'application', label: 'Application Settings', content: <ApplicationDetails /> },
     ];
     
     return (

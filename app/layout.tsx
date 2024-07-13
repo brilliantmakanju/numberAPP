@@ -1,8 +1,18 @@
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from '@vercel/analytics/react';
 import { Inter } from "next/font/google";
+// import 'primereact/resources/themes/fluent-light/theme.css';
+import 'primereact/resources/themes/tailwind-light/theme.css';
+
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
+// import 'primeflex/primeflex.css';
 import type { Metadata } from "next";
 import "./globals.css";
+
+
+import { PrimeReactProvider, PrimeReactContext } from 'primereact/api';
+        
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,6 +27,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <PrimeReactProvider>
+
     <html lang="en">
       <body className={` overflow-hidden ${inter.className}`}>
         {children}
@@ -24,5 +36,7 @@ export default function RootLayout({
         <SpeedInsights />
         </body>
     </html>
+
+    </PrimeReactProvider>
   );
 }
