@@ -63,6 +63,7 @@ const StatusUpdate: React.FC<StatusUpdateProps> = ({ currentStatus, onChangeStat
         setValue('status', currentStatus || 'applied');
     }, [currentStatus, setValue]);
 
+
     return (
         <div className="flex items-center w-[7.5rem] mt-[-15px] gap-4">
             <Select
@@ -83,7 +84,7 @@ const StatusUpdate: React.FC<StatusUpdateProps> = ({ currentStatus, onChangeStat
                 </SelectTrigger>
                 <SelectContent>
                     {jobStatusOptions.map((statusOption) => (
-                        <SelectItem key={statusOption} value={statusOption}>
+                        <SelectItem key={statusOption} disabled={statusOption === status} value={statusOption}>
                             {statusOption.charAt(0).toUpperCase() + statusOption.slice(1)}
                         </SelectItem>
                     ))}
