@@ -46,7 +46,7 @@ const JobPreferencesForm = ({ onSubmit }: { onSubmit: any }) => {
                                     <ReusableMultiSelect
                                         disabled={false}
                                         value={field.value}
-                                        onChange={(selected) => { field.onChange(selected) }}
+                                        onChange={(selected: any) => { field.onChange(selected) }}
                                         optionLabel="label"
                                         placeholder="Select job titles"
                                         options={[
@@ -73,7 +73,7 @@ const JobPreferencesForm = ({ onSubmit }: { onSubmit: any }) => {
                                     <ReusableMultiSelect
                                         disabled={false}
                                         value={field.value}
-                                        onChange={(selected) => field.onChange(selected)}
+                                        onChange={(selected: any) => field.onChange(selected)}
                                         optionLabel="label"
                                         placeholder="Select industries"
                                         options={[
@@ -98,7 +98,7 @@ const JobPreferencesForm = ({ onSubmit }: { onSubmit: any }) => {
                                     <ReusableMultiSelect
                                         disabled={false}
                                         value={field.value}
-                                        onChange={(selected) => { field.onChange(selected) }}
+                                        onChange={(selected: any) => { field.onChange(selected) }}
                                         optionLabel="label"
                                         placeholder="Select work type"
                                         options={[
@@ -138,7 +138,7 @@ const JobPreferencesForm = ({ onSubmit }: { onSubmit: any }) => {
                                     <ReusableMultiSelect
                                         disabled={false}
                                         value={field.value}
-                                        onChange={(selected) => field.onChange(selected)}
+                                        onChange={(selected: any) => field.onChange(selected)}
                                         optionLabel="label"
                                         placeholder="Select remote work preference"
                                         options={[
@@ -188,7 +188,7 @@ const JobPreferencesForm = ({ onSubmit }: { onSubmit: any }) => {
                                     <ReusableMultiSelect
                                         disabled={false}
                                         value={field.value}
-                                        onChange={(selected) => field.onChange(selected)}
+                                        onChange={(selected: any) => field.onChange(selected)}
                                         optionLabel="label"
                                         placeholder="Select travel preference"
                                         options={[
