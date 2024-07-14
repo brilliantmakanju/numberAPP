@@ -1,3 +1,5 @@
+import { ExperienceFormData } from "./lib/schema/schema";
+
 interface User_Token {
     access_tokens: string;
 }
@@ -63,4 +65,22 @@ interface MutliSelectProps {
     placeholder?: string;
     options: { label: string; value: string }[];
     onChange: (event: { value: string[] }) => void;
+}
+
+
+export interface SkillsAndQualificationsFormData {
+    professionalSkills: string;
+    certifications?: string;
+    technologies?: string;
+    languages: string[];
+    softSkills?: string;
+}
+
+export type SkillsAndQualificationsFormProps = {
+    onSubmit: (data: SkillsAndQualificationsFormData) => void;
+};
+
+
+export interface ExperienceFormProps {
+    onSubmit: (data: ExperienceFormData) => void;
 }

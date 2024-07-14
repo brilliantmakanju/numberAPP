@@ -1,17 +1,14 @@
 'use client'
-import React from 'react';
+import React, { useState } from 'react';
 // import { PhoneInput } from '@/components/ui/phone';
 import { zodResolver } from "@hookform/resolvers/zod"
 import PhoneInput from "react-phone-input-2"
 import "react-phone-input-2/lib/style.css"
 import { useForm } from "react-hook-form"
-import { z } from "zod"
-
 import { Button } from "@/components/ui/button"
 import {
     Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
@@ -22,6 +19,8 @@ import { personalInformationSchema } from '@/lib/schema/schema';
 
 
 const PersonalInformation = ({ onSubmit }: { onSubmit: any }) => {
+
+    const [makeChange, setMakeChange] = useState(false)
 
     const form = useForm({
         resolver: zodResolver(personalInformationSchema),
@@ -36,9 +35,9 @@ const PersonalInformation = ({ onSubmit }: { onSubmit: any }) => {
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="w-full">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-5 justify-start items-start w-full">
                 <h2 className="text-xl font-bold mb-4">Personal Information</h2>
-                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                <div className="grid grid-cols-1 w-full gap-4 md:grid-cols-2">
                     <FormField
                         control={form.control}
                         name="preferredName"
@@ -46,7 +45,7 @@ const PersonalInformation = ({ onSubmit }: { onSubmit: any }) => {
                             <FormItem>
                                 <FormLabel>Preferred Name or Nickname</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="John" {...field} />
+                                    <Input disabled={!makeChange} placeholder="John" {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -61,6 +60,7 @@ const PersonalInformation = ({ onSubmit }: { onSubmit: any }) => {
                                 <FormControl>
                                     <PhoneInput
                                         country={'us'}
+                                        disabled={!makeChange}
                                         value={field.value}
                                         onChange={field.onChange}
                                         inputStyle={{ width: '100%' }}
@@ -77,7 +77,7 @@ const PersonalInformation = ({ onSubmit }: { onSubmit: any }) => {
                             <FormItem>
                                 <FormLabel>LinkedIn Profile URL</FormLabel>
                                 <FormControl>
-                                    <Input type="url" placeholder="linkedin.com/in/johndoe" {...field} />
+                                    <Input disabled={!makeChange} type="url" placeholder="linkedin.com/in/johndoe" {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -90,12 +90,15 @@ const PersonalInformation = ({ onSubmit }: { onSubmit: any }) => {
                             <FormItem>
                                 <FormLabel>Current Residential Address</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="123 Main St, Anytown, USA" {...field} />
+                                    <Input disabled={!makeChange} placeholder="123 Main St, Anytown, USA" {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
                         )}
                     />
+                </div>
+                <div className='w-full'>
+
                     <FormField
                         control={form.control}
                         name="portfolio"
@@ -103,15 +106,20 @@ const PersonalInformation = ({ onSubmit }: { onSubmit: any }) => {
                             <FormItem>
                                 <FormLabel>Professional Website or Portfolio</FormLabel>
                                 <FormControl>
-                                    <Input type="url" placeholder="johndoedesigns.com" {...field} />
+                                    <Input className='w-full' disabled={!makeChange} type="url" placeholder="johndoedesigns.com" {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
                         )}
                     />
                 </div>
-                <div className='w-full flex justify-end items-center py-3'>
-                    <Button type="submit">Submit</Button>
+                <div className='flex w-full justify-end items-end gap-[10px] '>
+                    {
+                        makeChange &&
+                        <Button type='submit' onClick={() => setMakeChange(false)} className='shadow px-5 text-[#ffffff] py-3'>Save changes</Button>
+
+                    }
+                    <Button type='button' onClick={() => setMakeChange(!makeChange)} variant={'outline'} className='shadow border px-5 text-[#6b6a6a] py-3 '>Change</Button>
                 </div>
             </form>
         </Form>
