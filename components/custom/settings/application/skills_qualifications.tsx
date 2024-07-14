@@ -10,13 +10,16 @@ import {
     FormLabel,
     FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea"
 import ReusableMultiSelect from "@/components/ui/multi-selects"; // Update import path as necessary
 import { skillsAndQualificationsSchema } from "@/lib/schema/schema"; // Import your Zod schema and TypeScript interfaces
 import { SkillsAndQualificationsFormData, SkillsAndQualificationsFormProps } from "@/types";
+import { useState } from "react";
 
 const SkillsAndQualificationsForm = ({ onSubmit }: SkillsAndQualificationsFormProps) => {
+
+    const [makeChange, setMakeChange] = useState(false)
+
     const form = useForm<SkillsAndQualificationsFormData>({
         resolver: zodResolver(skillsAndQualificationsSchema),
         defaultValues: {
@@ -34,7 +37,7 @@ const SkillsAndQualificationsForm = ({ onSubmit }: SkillsAndQualificationsFormPr
 
     return (
         <Form{...form} >
-            <form onSubmit={form.handleSubmit(handleFormSubmit)} className="w-full space-y-4">
+            <form onSubmit={form.handleSubmit(handleFormSubmit)} className="w-full space-y-5">
                 <h2 className="text-xl font-bold mb-4">Skills and Qualifications</h2>
                 <div className="grid grid-cols-1 gap-4">
                     <FormField
@@ -45,6 +48,7 @@ const SkillsAndQualificationsForm = ({ onSubmit }: SkillsAndQualificationsFormPr
                                 <FormLabel>Professional Skills</FormLabel>
                                 <FormControl>
                                     <Textarea
+                                        disabled={!makeChange}
                                         placeholder="Enter your top five professional skills"
                                         {...field}
                                         className="w-full"
@@ -65,6 +69,7 @@ const SkillsAndQualificationsForm = ({ onSubmit }: SkillsAndQualificationsFormPr
                                 <FormLabel>Certifications or Licenses</FormLabel>
                                 <FormControl>
                                     <Textarea
+                                        disabled={!makeChange}
                                         placeholder="List your certifications or licenses"
                                         {...field}
                                         className="w-full"
@@ -85,6 +90,7 @@ const SkillsAndQualificationsForm = ({ onSubmit }: SkillsAndQualificationsFormPr
                                 <FormLabel>Proficient Technologies</FormLabel>
                                 <FormControl>
                                     <Textarea
+                                        disabled={!makeChange}
                                         placeholder="Enter software, tools, or technologies you are proficient in"
                                         {...field}
                                         className="w-full"
@@ -106,6 +112,7 @@ const SkillsAndQualificationsForm = ({ onSubmit }: SkillsAndQualificationsFormPr
                                 <FormControl>
                                     <ReusableMultiSelect
                                         value={field.value}
+                                        disabled={!makeChange}
                                         onChange={(selected: any) => field.onChange(selected)}
                                         optionLabel="label"
                                         placeholder="Select languages"
@@ -130,6 +137,7 @@ const SkillsAndQualificationsForm = ({ onSubmit }: SkillsAndQualificationsFormPr
                                 <FormLabel>Soft Skills</FormLabel>
                                 <FormControl>
                                     <Textarea
+                                        disabled={!makeChange}
                                         placeholder="Enter your soft skills"
                                         {...field}
                                         className="w-full"
@@ -143,8 +151,13 @@ const SkillsAndQualificationsForm = ({ onSubmit }: SkillsAndQualificationsFormPr
                         )}
                     />
                 </div>
-                <div className="flex justify-end">
-                    <Button type="submit">Submit</Button>
+                <div className='flex w-full justify-end items-end gap-[10px] '>
+                    {
+                        makeChange &&
+                        <Button type='submit' onClick={() => setMakeChange(false)} className='shadow px-5 text-[#ffffff] py-3'>Save changes</Button>
+
+                    }
+                    <Button type='button' onClick={() => setMakeChange(!makeChange)} variant={'outline'} className='shadow border px-5 text-[#6b6a6a] py-3 '>Change</Button>
                 </div>
             </form>
         </Form>

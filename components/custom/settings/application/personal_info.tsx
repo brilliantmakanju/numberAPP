@@ -35,7 +35,7 @@ const PersonalInformation = ({ onSubmit }: { onSubmit: any }) => {
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-5 justify-start items-start w-full">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-5">
                 <h2 className="text-xl font-bold mb-4">Personal Information</h2>
                 <div className="grid grid-cols-1 w-full gap-4 md:grid-cols-2">
                     <FormField

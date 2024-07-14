@@ -14,8 +14,10 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { availabilitySchema, AvailabilityFormData } from "@/lib/schema/schema";
+import { useState } from "react";
 
 export default function AvailabilityForm({ onSubmit }: { onSubmit: SubmitHandler<AvailabilityFormData> }) {
+    const [makeChange, setMakeChange] = useState(false)
     const form = useForm<AvailabilityFormData>({
         resolver: zodResolver(availabilitySchema),
         defaultValues: {
@@ -38,7 +40,7 @@ export default function AvailabilityForm({ onSubmit }: { onSubmit: SubmitHandler
                             <FormItem>
                                 <FormLabel>When are you available to start a new job?</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="Immediately" {...field} />
+                                    <Input disabled={!makeChange} placeholder="Immediately" {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -51,7 +53,7 @@ export default function AvailabilityForm({ onSubmit }: { onSubmit: SubmitHandler
                             <FormItem>
                                 <FormLabel>What are your preferred work hours?</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="Standard business hours" {...field} />
+                                    <Input disabled={!makeChange} placeholder="Standard business hours" {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -65,7 +67,7 @@ export default function AvailabilityForm({ onSubmit }: { onSubmit: SubmitHandler
                         <FormItem>
                             <FormLabel>Are there any days or times you are unavailable to work?</FormLabel>
                             <FormControl>
-                                <Textarea placeholder="Not available on weekends" {...field} />
+                                <Textarea disabled={!makeChange} placeholder="Not available on weekends" {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -78,14 +80,19 @@ export default function AvailabilityForm({ onSubmit }: { onSubmit: SubmitHandler
                         <FormItem>
                             <FormLabel>Do you have any upcoming commitments that may affect your availability?</FormLabel>
                             <FormControl>
-                                <Textarea placeholder="No" {...field} />
+                                <Textarea disabled={!makeChange} placeholder="No" {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
                     )}
                 />
-                <div className="w-full flex justify-end items-center py-3">
-                    <Button type="submit">Submit</Button>
+                <div className='flex w-full justify-end items-end gap-[10px] '>
+                    {
+                        makeChange &&
+                        <Button type='submit' onClick={() => setMakeChange(false)} className='shadow px-5 text-[#ffffff] py-3'>Save changes</Button>
+
+                    }
+                    <Button type='button' onClick={() => setMakeChange(!makeChange)} variant={'outline'} className='shadow border px-5 text-[#6b6a6a] py-3 '>Change</Button>
                 </div>
             </form>
         </Form>

@@ -21,8 +21,10 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 import { educationSchema, EducationFormData } from "@/lib/schema/schema";
+import { useState } from "react";
 
 export default function EducationForm({ onSubmit }: { onSubmit: SubmitHandler<EducationFormData> }) {
+    const [makeChange, setMakeChange] = useState(false)
     const form = useForm<EducationFormData>({
         resolver: zodResolver(educationSchema),
         defaultValues: {
@@ -46,7 +48,7 @@ export default function EducationForm({ onSubmit }: { onSubmit: SubmitHandler<Ed
                             <FormItem>
                                 <FormLabel>Highest Degree Obtained</FormLabel>
                                 <FormControl>
-                                    <Select value={field.value} onValueChange={field.onChange}>
+                                    <Select disabled={!makeChange} value={field.value} onValueChange={field.onChange}>
                                         <SelectTrigger className="w-full">
                                             <SelectValue placeholder="Select degree" />
                                         </SelectTrigger>
@@ -70,7 +72,7 @@ export default function EducationForm({ onSubmit }: { onSubmit: SubmitHandler<Ed
                             <FormItem>
                                 <FormLabel>Field of Study</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="Computer Science" {...field} />
+                                    <Input disabled={!makeChange} placeholder="Computer Science" {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -83,7 +85,7 @@ export default function EducationForm({ onSubmit }: { onSubmit: SubmitHandler<Ed
                             <FormItem>
                                 <FormLabel>University or College</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="University of California, Berkeley" {...field} />
+                                    <Input disabled={!makeChange} placeholder="University of California, Berkeley" {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -96,7 +98,7 @@ export default function EducationForm({ onSubmit }: { onSubmit: SubmitHandler<Ed
                             <FormItem>
                                 <FormLabel>Graduation Year</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="2016" {...field} />
+                                    <Input disabled={!makeChange} placeholder="2016" {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -110,14 +112,19 @@ export default function EducationForm({ onSubmit }: { onSubmit: SubmitHandler<Ed
                         <FormItem>
                             <FormLabel>Additional Degrees or Certifications</FormLabel>
                             <FormControl>
-                                <Textarea placeholder="Master's in Data Science from Stanford University, graduated in 2018" {...field} />
+                                <Textarea disabled={!makeChange} placeholder="Master's in Data Science from Stanford University, graduated in 2018" {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
                     )}
                 />
-                <div className="w-full flex justify-end items-center py-3">
-                    <Button type="submit">Submit</Button>
+                <div className='flex w-full justify-end items-end gap-[10px] '>
+                    {
+                        makeChange &&
+                        <Button type='submit' onClick={() => setMakeChange(false)} className='shadow px-5 text-[#ffffff] py-3'>Save changes</Button>
+
+                    }
+                    <Button type='button' onClick={() => setMakeChange(!makeChange)} variant={'outline'} className='shadow border px-5 text-[#6b6a6a] py-3 '>Change</Button>
                 </div>
             </form>
         </Form>

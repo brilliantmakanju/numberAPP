@@ -1,8 +1,7 @@
 'use client'
 import { Card } from '@/components/ui/card'
-import { HeartIcon } from 'lucide-react'
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
 import {
     Dialog,
     DialogContent,
@@ -11,9 +10,18 @@ import {
     DialogTrigger,
 } from "@/components/ui/dialog"
 import Markdowns from '../markdown'
-import { Button } from '@/components/ui/button'
+import { JobSearchCardProps } from '@/types'
+import { JobStatus } from '@/lib/schema/schema'
+import StatusUpdate from '../statusUpdate'
 
 const Jobsearchcard = ({ logo, role, company, posted, liked, brief, description }: JobSearchCardProps) => {
+
+    const [status, setStatus] = useState<JobStatus>('applied');
+
+    const handleChangeStatus = (newStatus: JobStatus) => {
+        setStatus(newStatus);
+    };
+
     return (
         <Dialog>
             <DialogTrigger asChild>
@@ -46,25 +54,38 @@ const Jobsearchcard = ({ logo, role, company, posted, liked, brief, description 
                 <DialogDescription className='hidden'>
                     Apply Now
                 </DialogDescription>
+
                 <div className='flex mt-[20px] pt-[10px] flex-row w-full justify-between items-start'>
-                    <div className='flex flex-row gap-[14px] justify-start items-start'>
+                    <div className='flex w-full flex-row gap-[14px] justify-start items-start'>
                         <div className='w-[40px]  h-[2.5rem] relative'>
                             <Image src={`${logo}`} alt='Number One Career Logo' width={999} height={999} className={`w-full h-full absolute top-0 left-0`} />
                         </div>
-                        <div className='flex flex-col justify-start items-start'>
+                        <div className='flex flex-col w-full justify-start items-start'>
                             <h2 className="text-xl font-semibold">{role}</h2>
-                            <p className="text-sm text-gray-500">{company}, {posted} </p>
+                            <div className='w-full flex justify-between items-center'>
+                                <p className="text-sm text-gray-500">{company}, {posted} </p>
+                                <StatusUpdate
+                                    jobId='jajsjsjjsjjakskjasjk'
+                                    currentStatus={status}
+                                    endpoint="/api/update-status"
+                                    onChangeStatus={handleChangeStatus}
+                                />
+                            </div>
                         </div>
                     </div>
                     {/* <div className='flex flex-row mt-[10px] justify-start items-start'>
                         <HeartIcon size={30} className=' cursor-pointer ' />
                     </div> */}
                 </div>
-                <div className='flex flex-col justify-start items-start h-full text-[14px] overflow-hidden overflow-y-scroll break-words descriptions w-[105%] sm:w-[102%] md:w-[38.3rem] '>
+
+
+                <div className='flex flex-col justify-start items-start h-full text-[14px] overflow-hidden overflow-y-scroll break-words descriptions w-[105%] sm:w-[102%] md:w-[38.3rem] pb-6 '>
+
+
                     <Markdowns content={description} />
 
 
-                    <div className='w-full flex flex-col mt-[20px] justify-start gap-[10px] pb-[2.2rem] lg:pb-[10px] items-start'>
+                    <div className='w-full flex flex-col mt-[20px] justify-start gap-[10px] items-start'>
                         <h3 className='text-[18px] font-semibold'>Resources used</h3>
                         <div className='w-full flex flex-wrap'>
                             <div className='flex flex-col md:flex-row w-full gap-[12px] pr-[10px] justify-between items-start '>

@@ -84,6 +84,20 @@ export const preferencesAndMotivationsSchema = z.object({
   nextRoleAchievements: z.string().min(1, { message: "Achievements hoped for in next role are required." }),
 });
 
+export type JobStatus = "applied" | "interview" | "offer" | "hire" | "rejected";
+
+export const jobStatusOptions: JobStatus[] = ["applied", "interview", "offer", "hire", "rejected"];
+
+
+export const statusColors: { [key in JobStatus]: string } = {
+  applied: 'bg-blue-500',
+  interview: 'bg-yellow-500',
+  offer: 'bg-green-500',
+  hire: 'bg-purple-500',
+  rejected: 'bg-red-500',
+};
+
+
 export type PreferencesAndMotivationsFormData = z.infer<typeof preferencesAndMotivationsSchema>;
 
 export type BehavioralQuestionsFormData = z.infer<typeof behavioralQuestionsSchema>;

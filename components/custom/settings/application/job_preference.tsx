@@ -14,9 +14,13 @@ import {
 import { Input } from "@/components/ui/input";
 import ReusableMultiSelect from "@/components/ui/multi-selects"; // Update the import path as necessary
 import { jobPreferencesSchema } from "@/lib/schema/schema";
+import { useState } from "react";
 
 
 const JobPreferencesForm = ({ onSubmit }: { onSubmit: any }) => {
+
+    const [makeChange, setMakeChange] = useState(false)
+
     const form = useForm({
         resolver: zodResolver(jobPreferencesSchema),
         defaultValues: {
@@ -33,7 +37,7 @@ const JobPreferencesForm = ({ onSubmit }: { onSubmit: any }) => {
 
     return (
         <Form {...form} >
-            <form onSubmit={form.handleSubmit(onSubmit)} className="w-full flex flex-col justify-start items-start gap-[10px]">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-5">
                 <h2 className="text-xl font-bold mb-4">Job Preferences</h2>
                 <div className="grid grid-cols-1 w-full gap-4 md:grid-cols-2">
                     <FormField
@@ -44,7 +48,7 @@ const JobPreferencesForm = ({ onSubmit }: { onSubmit: any }) => {
                                 <FormLabel>Job Titles or Roles</FormLabel>
                                 <FormControl>
                                     <ReusableMultiSelect
-                                        disabled={false}
+                                        disabled={!makeChange}
                                         value={field.value}
                                         onChange={(selected: any) => { field.onChange(selected) }}
                                         optionLabel="label"
@@ -71,7 +75,7 @@ const JobPreferencesForm = ({ onSubmit }: { onSubmit: any }) => {
                                 <FormLabel>Industries</FormLabel>
                                 <FormControl>
                                     <ReusableMultiSelect
-                                        disabled={false}
+                                        disabled={!makeChange}
                                         value={field.value}
                                         onChange={(selected: any) => field.onChange(selected)}
                                         optionLabel="label"
@@ -96,7 +100,7 @@ const JobPreferencesForm = ({ onSubmit }: { onSubmit: any }) => {
                                 <FormLabel>Preferred Work Type</FormLabel>
                                 <FormControl>
                                     <ReusableMultiSelect
-                                        disabled={false}
+                                        disabled={!makeChange}
                                         value={field.value}
                                         onChange={(selected: any) => { field.onChange(selected) }}
                                         optionLabel="label"
@@ -136,7 +140,7 @@ const JobPreferencesForm = ({ onSubmit }: { onSubmit: any }) => {
                                 <FormLabel>Remote Work Preference</FormLabel>
                                 <FormControl>
                                     <ReusableMultiSelect
-                                        disabled={false}
+                                        disabled={!makeChange}
                                         value={field.value}
                                         onChange={(selected: any) => field.onChange(selected)}
                                         optionLabel="label"
@@ -186,7 +190,7 @@ const JobPreferencesForm = ({ onSubmit }: { onSubmit: any }) => {
                                 <FormLabel>Travel Preference</FormLabel>
                                 <FormControl>
                                     <ReusableMultiSelect
-                                        disabled={false}
+                                        disabled={!makeChange}
                                         value={field.value}
                                         onChange={(selected: any) => field.onChange(selected)}
                                         optionLabel="label"
@@ -202,8 +206,13 @@ const JobPreferencesForm = ({ onSubmit }: { onSubmit: any }) => {
                         )}
                     />
                 </div>
-                <div className="flex justify-end w-full mt-[30px] items-center">
-                    <Button type="submit">Submit</Button>
+                <div className='flex w-full justify-end items-end gap-[10px] '>
+                    {
+                        makeChange &&
+                        <Button type='submit' onClick={() => setMakeChange(false)} className='shadow px-5 text-[#ffffff] py-3'>Save changes</Button>
+
+                    }
+                    <Button type='button' onClick={() => setMakeChange(!makeChange)} variant={'outline'} className='shadow border px-5 text-[#6b6a6a] py-3 '>Change</Button>
                 </div>
             </form>
         </Form>

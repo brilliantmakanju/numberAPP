@@ -66,7 +66,7 @@ const Jobsearch = () => {
 
 
             <div className='w-full flex flex-col gap-[20px] justify-start items-start '>
-                <div className='w-full flex justify-start items-start '>
+                {/* <div className='w-full flex justify-start items-start '>
                     <div className='flex justify-start items-start ml-3 group relative' tabIndex={0}>
                         <div className='pt-[6px]'>
                             <Settings2Icon size={24} />
@@ -85,7 +85,7 @@ const Jobsearch = () => {
                         <span className='py-2 px-4 rounded-full bg-[white] text-black cursor-pointer border border-black hover:bg-black hover:bg-opacity-80 hover:text-white transition-all ease-in-out duration-300 '>Easy apply</span>
 
                     </div>
-                </div>
+                </div> */}
 
                 <div className='grid w-full grid-cols-1 gap-4 gap-x-4 transition-all sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 pb-[10px] '>
                     {times.map((_, index) => (

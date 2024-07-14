@@ -67,6 +67,11 @@ interface MutliSelectProps {
     onChange: (event: { value: string[] }) => void;
 }
 
+interface StatusUpdateProps {
+    currentStatus: JobStatus;
+    onChangeStatus: (status: JobStatus) => void;
+    endpoint: string;
+  }
 
 export interface SkillsAndQualificationsFormData {
     professionalSkills: string;
