@@ -52,9 +52,9 @@ export default function EducationForm({ onSubmit }: { onSubmit: SubmitHandler<Ed
                                         </SelectTrigger>
                                         <SelectContent>
                                             <SelectItem value="High School">High School</SelectItem>
-                                            <SelectItem value="Associate's Degree">Associate's Degree</SelectItem>
-                                            <SelectItem value="Bachelor's Degree">Bachelor's Degree</SelectItem>
-                                            <SelectItem value="Master's Degree">Master's Degree</SelectItem>
+                                            <SelectItem value="Associate's Degree">Associate{`'`}s Degree</SelectItem>
+                                            <SelectItem value="Bachelor's Degree">Bachelor{`'`}s Degree</SelectItem>
+                                            <SelectItem value="Master's Degree">Master{`'`}s Degree</SelectItem>
                                             <SelectItem value="Doctorate">Doctorate</SelectItem>
                                         </SelectContent>
                                     </Select>
