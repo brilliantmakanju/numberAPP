@@ -66,7 +66,7 @@ const Jobsearchcard = ({ logo, role, company, posted, liked, brief, description 
                                 <p className="text-sm text-gray-500">{company}, {posted} </p>
                                 <StatusUpdate
                                     jobId='jajsjsjjsjjakskjasjk'
-                                    currentStatus={status}
+                                    currentStatus={'applied'}
                                     endpoint="/api/update-status"
                                     onChangeStatus={handleChangeStatus}
                                 />

@@ -11,7 +11,6 @@ import {
     PaginationPrevious,
 } from "@/components/ui/pagination"
 import Jobsearchcard from './jobsearchcard'
-import { Settings2Icon } from 'lucide-react'
 
 
 const Jobsearch = () => {

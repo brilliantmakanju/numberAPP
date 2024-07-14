@@ -1,5 +1,4 @@
 'use client';
-
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -29,7 +28,7 @@ const StatusUpdate: React.FC<StatusUpdateProps> = ({ currentStatus, onChangeStat
     const { register, setValue, watch } = useForm<StatusFormData>({
         resolver: zodResolver(statusSchema),
         defaultValues: {
-            status: currentStatus,
+            status: currentStatus || 'applied', // Default to 'applied' if currentStatus is undefined or null
         },
     });
 
@@ -59,6 +58,11 @@ const StatusUpdate: React.FC<StatusUpdateProps> = ({ currentStatus, onChangeStat
         }
     };
 
+    // Set the value explicitly when the component mounts
+    useEffect(() => {
+        setValue('status', currentStatus || 'applied');
+    }, [currentStatus, setValue]);
+
     return (
         <div className="flex items-center w-[7.5rem] mt-[-15px] gap-4">
             <Select
@@ -74,16 +78,15 @@ const StatusUpdate: React.FC<StatusUpdateProps> = ({ currentStatus, onChangeStat
                             Saving...
                         </SelectValue>
                     ) : (
-                        <SelectValue placeholder="Select Status" />
+                        <SelectValue placeholder={`${status ? status.charAt(0).toUpperCase() + status.slice(1) : 'Select Status'}`} />
                     )}
                 </SelectTrigger>
-                <SelectContent >
-                    {jobStatusOptions.map((status) => (
-                        <SelectItem key={status} value={status}>
-                            {status.charAt(0).toUpperCase() + status.slice(1)}
+                <SelectContent>
+                    {jobStatusOptions.map((statusOption) => (
+                        <SelectItem key={statusOption} value={statusOption}>
+                            {statusOption.charAt(0).toUpperCase() + statusOption.slice(1)}
                         </SelectItem>
                     ))}
-
                 </SelectContent>
             </Select>
         </div>
